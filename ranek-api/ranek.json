@@ -18,7 +18,7 @@
       "nome": "Notebook",
       "usuario_id": "andre@origamid.com",
       "preco": "4999",
-      "vendido": "false",
+      "vendido": "true",
       "descricao": "Esse é um novo notebook.",
       "fotos": null
     },

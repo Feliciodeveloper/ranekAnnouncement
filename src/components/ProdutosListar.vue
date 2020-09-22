@@ -1,23 +1,38 @@
 <template>
   <section class="produtos-container">
-    <div v-if="produtos && produtos.length" class="produtos">
-      <div v-for="(produto,index) in produtos" :key="index" class="produto">
-        <router-link to="/">
-          <img v-if="produto.fotos" :src="produto.fotos[0].src" :alt="produto.fotos[0].titulo" />
-          <p class="preco">{{ produto.preco}}</p>
-          <h2 class="titulo">{{ produto.nome }}</h2>
-          <p>{{ produto.descricao }}</p>
-        </router-link>
+    <transition mode="out-in">
+      <div v-if="produtos && produtos.length" class="produtos" key="produto-carregado">
+        <div v-for="(produto,index) in produtos" :key="index" class="produto">
+          <router-link :to="{name:'Produto', params:{id:produto.id}}">
+            <img v-if="produto.fotos" :src="produto.fotos[0].src" :alt="produto.fotos[0].titulo" />
+            <p class="preco">{{ produto.preco | numeroPreco}}</p>
+            <h2 :class="{vendido:produto.vendido === 'true'}" class="titulo">
+              {{ produto.nome }}
+              <span
+                v-if="produto.vendido === 'true'"
+                class="produto-vendido"
+              >Vendido</span>
+            </h2>
+            <p>{{ produto.descricao }}</p>
+          </router-link>
+        </div>
+        <ProdutosPaginar
+          :produtosTotal="produtosTotal"
+          :limiteProdutos="limiteProdutos"
+          class="paginacao"
+        />
       </div>
-      <ProdutosPaginar
-        :produtosTotal="produtosTotal"
-        :limiteProdutos="limiteProdutos"
-        class="paginacao"
-      />
-    </div>
-    <div v-else class="sem-resultados">
-      <p>Nenhum produto encontrado</p>
-    </div>
+      <div
+        v-else-if="produtos && produtos.length === 0"
+        class="sem-resultados"
+        key="nenhum-produto"
+      >
+        <p>Nenhum produto encontrado</p>
+      </div>
+      <div v-else key="carregando">
+        <PaginaCarregando />
+      </div>
+    </transition>
   </section>
 </template>
 
@@ -30,7 +45,7 @@ export default {
   data() {
     return {
       produtos: null,
-      limiteProdutos: 3,
+      limiteProdutos: 9,
       produtosTotal: 0,
     };
   },
@@ -45,6 +60,7 @@ export default {
   },
   methods: {
     getProdutos() {
+      this.produtos = null;
       api.get(this.url).then((json) => {
         this.produtos = json.data;
         this.produtosTotal = Number(json.headers["x-total-count"]);
@@ -54,14 +70,6 @@ export default {
   watch: {
     url() {
       this.getProdutos();
-    },
-  },
-  filters: {
-    numeroPreco(param) {
-      return param.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-      });
     },
   },
   created() {
@@ -110,5 +118,19 @@ export default {
 }
 .paginacao {
   grid-column: 1 / -1;
+}
+.vendido {
+  position: relative;
+}
+.produto-vendido {
+  position: absolute;
+  font-size: 0.725rem;
+  top: 0;
+  right: 0;
+  color: #fff;
+  background: #ff540d;
+  display: inline-block;
+  padding: 5px;
+  border-radius: 5px;
 }
 </style>
