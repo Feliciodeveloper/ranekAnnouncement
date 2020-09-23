@@ -2,7 +2,9 @@
   <div id="app">
     <TheHeader />
     <main id="main">
-      <router-view />
+      <transition mode="out-in">
+        <router-view />
+      </transition>
     </main>
     <TheFooter />
   </div>
@@ -26,7 +28,8 @@ ul,
 li,
 h1,
 h2,
-p {
+p,
+form {
   padding: 0px;
   margin: 0px;
 }
@@ -71,6 +74,9 @@ img {
 }
 #main {
   flex: 1;
+}
+label {
+  margin-bottom: 5px;
 }
 input,
 textarea {

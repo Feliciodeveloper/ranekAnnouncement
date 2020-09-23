@@ -10,6 +10,17 @@
       "numero": "25",
       "estado": "RJ",
       "cidade": "Rio de Janeiro"
+    },
+    {
+      "id": "admin@admin",
+      "email": "admin@admin",
+      "nome": "Admin",
+      "senha": "123",
+      "rua": "sem rua",
+      "cep": "sem cp",
+      "numero": "S/N",
+      "estado": "sem estado",
+      "cidade": "sem estado"
     }
   ],
   "produto": [

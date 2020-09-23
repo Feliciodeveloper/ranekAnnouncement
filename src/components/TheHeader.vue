@@ -1,17 +1,25 @@
 <template>
   <header>
     <nav>
-      <router-link class="logo" to="/"
-        ><img src="@/assets/ranek.svg" alt="logomarca da empresa"
-      /></router-link>
-      <router-link class="btn" to="/login">Vender / Login</router-link>
+      <router-link class="logo" to="/">
+        <img src="@/assets/ranek.svg" alt="logomarca da empresa" />
+      </router-link>
+      <router-link v-if="login" class="btn" to="/usuario">{{nome}}</router-link>
+      <router-link v-else class="btn" to="/login">Vender / Login</router-link>
     </nav>
   </header>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "TheHeader",
+  computed: {
+    ...mapState(["usuario", "login"]),
+    nome() {
+      return this.usuario.nome.replace(/ .*/, "");
+    },
+  },
 };
 </script>
 
