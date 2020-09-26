@@ -26,6 +26,7 @@
 
 <script>
 import { mapFields } from "@/helpers.js";
+import { getCep } from "@/services.js";
 export default {
   name: "UsuarioForm",
   computed: {
@@ -44,6 +45,23 @@ export default {
       base: "usuario",
       mutation: "UPDATE_USUARIO",
     }),
+  },
+  methods: {
+    preencherCep() {
+      const cep = this.cep.replace(/\D/g, "");
+      if (cep.length === 8)
+        getCep(cep).then((r) => {
+          this.rua = r.data.logradouro;
+          this.bairro = r.data.bairro;
+          this.cidade = r.data.localidade;
+          this.estado = r.data.uf;
+        });
+    },
+  },
+  watch: {
+    cep() {
+      this.preencherCep();
+    },
   },
 };
 </script>

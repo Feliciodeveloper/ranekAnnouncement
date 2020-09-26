@@ -12,15 +12,28 @@
       "cidade": "Rio de Janeiro"
     },
     {
-      "id": "admin@admin",
-      "email": "admin@admin",
-      "nome": "Admin",
+      "id": "thais_gabriele@hotmail.com",
+      "nome": "Thais",
+      "email": "thais_gabriele@hotmail.com",
       "senha": "123",
-      "rua": "sem rua",
-      "cep": "sem cp",
-      "numero": "S/N",
-      "estado": "sem estado",
-      "cidade": "sem estado"
+      "cep": "19025884",
+      "rua": "Rua Constantino Alves de Azevedo",
+      "numero": "472",
+      "bairro": "Jardim São Sebastião II",
+      "cidade": "Presidente Prudente",
+      "estado": "SP"
+    },
+    {
+      "id": "ffneto@outlook.com",
+      "nome": "Felicio Ferreira M",
+      "email": "ffneto@outlook.com",
+      "senha": "",
+      "cep": "19025884",
+      "rua": "Rua Constantino Alves de Azevedo",
+      "numero": "",
+      "bairro": "Jardim São Sebastião II",
+      "cidade": "Presidente Prudente",
+      "estado": "SP"
     }
   ],
   "produto": [

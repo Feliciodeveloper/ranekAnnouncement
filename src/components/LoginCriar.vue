@@ -6,8 +6,10 @@
         Criar Usuario
       </button>
       <UsuarioForm v-else>
-        <button class="btn btn-form">Criar Usuario</button>
-        <a @click="criar = false" class="voltar">Cancelar</a>
+        <button @click.prevent="criarUser" class="btn btn-form">
+          Criar Usuario
+        </button>
+        <a @click="cancelarCadastro" class="voltar">Cancelar</a>
       </UsuarioForm>
     </transition>
   </section>
@@ -15,6 +17,7 @@
 
 <script>
 import UsuarioForm from "@/components/UsuarioForm.vue";
+import { mapActions, mapState } from "vuex";
 export default {
   name: "LoginCriar",
   data() {
@@ -24,6 +27,25 @@ export default {
   },
   components: {
     UsuarioForm,
+  },
+  computed: {
+    ...mapState(["usuario"]),
+  },
+  methods: {
+    ...mapActions(["clearUsuario", "createUsuario", "getUsuario"]),
+    async criarUser() {
+      try {
+        await this.createUsuario(this.usuario);
+        await this.getUsuario(this.usuario.email);
+        this.$router.push({ name: "Usuario" });
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    cancelarCadastro() {
+      this.criar = false;
+      this.clearUsuario();
+    },
   },
 };
 </script>

@@ -33,17 +33,33 @@ form {
   padding: 0px;
   margin: 0px;
 }
-ul {
-  list-style: none;
-}
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #345;
   background: url("./assets/pattern.svg") repeat top;
 }
+ul {
+  list-style: none;
+}
+li {
+  display: inline-block;
+  margin-left: 5px;
+}
 a {
   color: #345;
   text-decoration: none;
+}
+li a {
+  padding: 5px;
+  border-radius: 2px;
+}
+li .router-link-exact-active {
+  background: #87f;
+  color: #fff;
+}
+li a:hover {
+  background: #65d;
+  color: #fff;
 }
 img {
   max-width: 100%;
