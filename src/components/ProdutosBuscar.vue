@@ -1,7 +1,18 @@
 <template>
   <form>
-    <input type="text" name="busca" id="busca" v-model="busca" placeholder="Buscar..." />
-    <input type="submit" value="Buscar" id="lupa" @click.prevent="buscaProduto(busca)" />
+    <input
+      type="text"
+      name="busca"
+      id="busca"
+      v-model="busca"
+      placeholder="Buscar..."
+    />
+    <input
+      type="submit"
+      value="Buscar"
+      id="lupa"
+      @click.prevent="buscaProduto(busca)"
+    />
   </form>
 </template>
 
@@ -22,7 +33,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 form {
   margin: 30px auto 60px auto;
   max-width: 600px;

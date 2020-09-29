@@ -42,7 +42,6 @@ ul {
   list-style: none;
 }
 li {
-  display: inline-block;
   margin-left: 5px;
 }
 a {

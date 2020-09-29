@@ -15,7 +15,7 @@
           <router-link :to="{ name: 'Usuario-editar' }">Perfil</router-link>
         </li>
         <li>
-          <button @click.prevent="deslogar" class="btn">Sair</button>
+          <button @click.prevent="deslogar">Sair</button>
         </li>
       </ul>
     </nav>
@@ -43,4 +43,43 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (max-width: 500px) {
+  .usuario {
+    grid-template: 1fr;
+    margin: 0 auto;
+  }
+}
+.usuario {
+  display: grid;
+  grid-template-columns: minmax(140px, 200px) 1fr;
+  margin: 40px auto;
+  grid-gap: 120px;
+  padding: 20px;
+  max-width: 100%;
+}
+.sidenav a,
+.sidenav button {
+  padding: 10px;
+  display: block;
+  width: 200px;
+  max-width: 100%;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background: #f4f7fc;
+}
+.sidenav a.router-link-exact-active,
+.sidenav a:hover,
+.sidenav button:hover {
+  background: #87f;
+  color: #ffffff;
+}
+.sidenav button {
+  border: none;
+  width: 200px;
+  max-width: 100%;
+  font-size: 1rem;
+  text-align: left;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+}
 </style>
