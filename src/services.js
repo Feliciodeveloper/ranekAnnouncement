@@ -9,6 +9,9 @@ export const api = {
   },
   post(url, body) {
     return axiosInstace.post(url, body);
+  },
+  delete(url) {
+    return axiosInstace.delete(url)
   }
 }
 

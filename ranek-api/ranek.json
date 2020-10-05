@@ -414,6 +414,14 @@
       "vendido": "false",
       "descricao": "Esse é um novo tablet.",
       "fotos": null
+    },
+    {
+      "nome": "Mi 9",
+      "preco": "1500",
+      "descricao": "",
+      "fotos": null,
+      "id": "Mi 9",
+      "usuario_id": "ffneto@outlook.com"
     }
   ]
 }
