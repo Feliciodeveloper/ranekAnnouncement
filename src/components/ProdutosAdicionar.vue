@@ -51,6 +51,7 @@ export default {
         fotos: null,
         id: null,
         usuario_id: null,
+        vendido: "false",
       },
     };
   },

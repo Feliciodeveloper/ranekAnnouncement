@@ -12,6 +12,9 @@ export const api = {
   },
   delete(url) {
     return axiosInstace.delete(url)
+  },
+  put(url, body) {
+    return axiosInstace.put(url, body);
   }
 }
 
