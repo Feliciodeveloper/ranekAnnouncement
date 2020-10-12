@@ -18,6 +18,7 @@
 <script>
 import LoginCriar from "@/components/LoginCriar.vue";
 import { mapActions } from "vuex";
+import { api } from "@/services.js";
 export default {
   name: "Login",
   data() {
@@ -34,8 +35,13 @@ export default {
   methods: {
     ...mapActions(["getUsuario"]),
     logar() {
-      this.getUsuario(this.login.email);
-      this.$router.push({ name: "Usuario" });
+      api.get(`/usuario?email=${this.login.email}&senha=${this.login.senha}`)
+      .then(e=>{
+        if(e.data.length > 0){
+          this.getUsuario(e.data[0].id);
+          this.$router.push({ name: "Usuario" });
+          } else window.alert("Email ou Senha invalido")
+      });
     },
   },
 };

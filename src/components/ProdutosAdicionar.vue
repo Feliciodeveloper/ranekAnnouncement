@@ -62,7 +62,7 @@ export default {
     ...mapActions(["getUsuarioProdutos"]),
     adicionarProdutos() {
       if (this.produto.nome.length > 0 && this.produto.preco.length > 0) {
-        this.produto.id = this.produto.nome;
+        this.produto.id = this.produto.nome.trim();
         api.post("/produto", this.produto).then(() => {
           this.getUsuarioProdutos();
         });

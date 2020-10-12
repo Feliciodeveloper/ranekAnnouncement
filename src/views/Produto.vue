@@ -10,7 +10,8 @@
         <h1>{{ produto.nome }}</h1>
         <p class="preco">{{ produto.preco | numeroPreco }}</p>
         <p class="descricao">{{ produto.descricao }}</p>
-        <transition mode="out-in" v-if="produto.vendido === 'false'">
+        <button v-if="produto.usuario_id === usuario.id" class="btn" disabled>Seu produto cadastrado</button>
+        <transition mode="out-in" v-else-if="produto.vendido === 'false'">
           <button
             v-if="!finalizar"
             @click.prevent="finalizar = true"
@@ -30,6 +31,7 @@
 <script>
 import { api } from "@/services.js";
 import FinalizarCompra from "@/components/FinalizarCompra.vue";
+import {mapState} from "vuex";
 export default {
   name: "Produto",
   props: ["id"],
@@ -38,6 +40,9 @@ export default {
       produto: null,
       finalizar: false,
     };
+  },
+  computed:{
+    ...mapState(["usuario"])
   },
   components: {
     FinalizarCompra,

@@ -24,7 +24,7 @@ export default {
     compra() {
       return {
         comprador_id: this.usuario.id,
-        vendendor_id: this.produto.usuario_id,
+        vendedor_id: this.produto.usuario_id,
         produto: this.produto,
         endereco: {
           cep: this.usuario.cep,
